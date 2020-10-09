@@ -23,7 +23,8 @@
      
           @include('layouts.navigation')
           @include('layouts.sidebar')
-          
+          @include('sweetalert::alert')
+
           <div class="content-wrapper">
                @yield('content')
           </div>

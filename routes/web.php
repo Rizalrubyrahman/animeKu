@@ -22,5 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
 Auth::routes();
 
 Route::namespace('Admin')->middleware('auth')->group(function(){
-    Route::resource('admin', 'DashboardController');
+    Route::resource('admin/', 'DashboardController');
+    Route::resource('admin/kategori', 'CategoryController');
+    
 });
