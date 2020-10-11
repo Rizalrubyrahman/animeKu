@@ -17,10 +17,11 @@
           <!-- AdminLTE Skins. Choose a skin from the css/skins
                folder instead of downloading all of them to reduce the load. -->
           <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
      </head>
 <body class="hold-transition skin-purple sidebar-mini">
-
      
+     <div class="wrapper">
           @include('layouts.navigation')
           @include('layouts.sidebar')
           @include('sweetalert::alert')
@@ -28,6 +29,7 @@
           <div class="content-wrapper">
                @yield('content')
           </div>
+     </div>          
 
      <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
      <!-- Bootstrap 3.3.6 -->
@@ -40,6 +42,12 @@
      <script src="{{ asset('dist/js/app.min.js') }}"></script>
      <!-- AdminLTE for demo purposes -->
      <script src="{{ asset('dist/js/demo.js') }}"></script>
+     <script src="{{ asset('js/select2.min.js') }}"></script>
+     <script>
+          $(document).ready(function() {
+               $('.js-example-basic-multiple').select2();
+          });
+     </script>
 
 </body>
      

@@ -31,7 +31,7 @@
                </li>
                <li class="treeview">
                     <a href="{{ url('admin/artikel') }}">
-                         <i class="fa fa-pen"></i> <span>Artikel</span>
+                         <i class="fa fa-pencil"></i> <span>Artikel</span>
                          <span class="pull-right-container">
                          </span>
                     </a>

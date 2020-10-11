@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('name', 'ASC')->paginate(5);
+        $categories = Category::orderBy('name', 'ASC')->paginate(10);
         return view('admin.category.index', compact('categories'));
     }
 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create',['category' => new Category()]);
+        return view('admin.category.create',['kategori' => new Category()]);
     }
 
     /**
