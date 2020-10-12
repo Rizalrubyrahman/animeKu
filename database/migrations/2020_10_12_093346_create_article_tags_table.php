@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryTagsTable extends Migration
+class CreateArticleTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCategoryTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_tags', function (Blueprint $table) {
+        Schema::create('article_tags', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('article_id')->constrained();
             $table->foreignId('tag_id')->constrained();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateCategoryTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_tags');
+        Schema::dropIfExists('article_tags');
     }
 }

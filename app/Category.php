@@ -13,8 +13,5 @@ class Category extends Model
         return $this->hasManyThrough(Article::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
+    
 }
