@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Article;
-use App\Category;
+use App\{Article, Category, Tag};
+
 
 class ArticleController extends Controller
 {
@@ -29,7 +29,12 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name', 'ASC')->get();
-        return view('admin.article.create',['artikel' => new Article(),'categories' => $categories]);
+        $tags = Tag::orderBy('name', 'ASC')->get();
+        return view('admin.article.create',[
+            'artikel' => new Article(),
+            'categories' => $categories,
+             'tags' => $tags
+        ]);
     }
 
     /**
@@ -44,7 +49,8 @@ class ArticleController extends Controller
             'title' => ['required', 'min:3'],
             'body' => ['required', 'min:3'],
             'category_id' => ['required'],
-            'image' => ['required']
+            'image' => ['required'],
+            'tag' => ['required']
         ]);
 
         $image = request()->file('image')->store('image');
@@ -55,6 +61,7 @@ class ArticleController extends Controller
         $attr['image'] = $image;
 
         $article = Article::create($attr);
+        $article->tags()->attach(request('tag'));
         
         if($article){
             alert()->success('Berhasil', 'Article telah di tambahkan');
@@ -65,7 +72,7 @@ class ArticleController extends Controller
         }
 
     }
-
+    
   
 
     /**
@@ -77,7 +84,8 @@ class ArticleController extends Controller
     public function edit(Article $artikel)
     {
         $categories = Category::orderBy('name', 'ASC')->get();
-        return view('admin.article.edit', compact('artikel', 'categories'));
+        $tags = Tag::orderBy('name', 'ASC')->get();
+        return view('admin.article.edit', compact('artikel', 'categories', 'tags'));
     }
 
     /**
@@ -93,6 +101,7 @@ class ArticleController extends Controller
             'title' => ['required', 'min:3'],
             'body' => ['required', 'min:3'],
             'category_id' => ['required'],
+            'tag' => ['required'],
         ]);
 
         if($request->hasFile('image')){
@@ -108,6 +117,7 @@ class ArticleController extends Controller
         $attr['image'] = $image;
 
         $artikel->update($attr);
+        $artikel->tags()->sync(request('tag'));
 
         alert()->success('Berhasil', 'Artikel telah di ubah');
         return redirect('/admin/artikel');
@@ -122,6 +132,7 @@ class ArticleController extends Controller
     public function destroy(Article $artikel)
     {
         \Storage::delete($artikel->image);
+        $artikel->tags()->detach();
         $artikel->delete();
 
         alert()->success('Berhasil', 'Artikel telah di hapus');
