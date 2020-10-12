@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\{Category, Article};
 
 class CategoryController extends Controller
 {
@@ -100,9 +100,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $kategori)
     {
+        
         $kategori->delete();
-
         alert()->success('Berhasil','Kategori telah di hapus');
         return redirect('/admin/kategori');
+        
     }
 }

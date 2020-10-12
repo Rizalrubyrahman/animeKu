@@ -46,10 +46,10 @@
                                         <tr>
                                              <td style="line-height:100px;" class="text-center">{{ $loop->iteration }}</td>
                                              <td style="line-height:100px;">{{ $article->title }}</td>
-                                             <td style="line-height:100px;">{{ $article->body }}</td>
+                                             <td>{{ $article->body }}</td>
                                              <td style="line-height:100px;">{{ $article->categories->name }}</td>
                                              <td class="text-center"><img style="height:100px; width:100px; " src="{{ $article->getImage() }}"></td>
-                                             <td style="line-height:100px;" class="text-center">
+                                             <td style="width: 100px; line-height: 100px;" class="text-center">
                                                   <a  href="{{ url('/admin/artikel/'.$article->id.'/edit') }}" class="btn btn-sm btn-warning"><i style="color:white;" class="fa fa-pencil"></i></a>
                                                   <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#article{{ $article->id }}">
                                                        <i class="fa fa-trash"></i>
