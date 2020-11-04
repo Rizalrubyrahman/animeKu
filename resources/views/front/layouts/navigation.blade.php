@@ -50,18 +50,16 @@
                               <a href="#">Kategori</a>
                               <div class="dropdown">
                                    <div class="dropdown-body">
-                                        <div class="row">
-                                             <div class="col-md-4">
-                                                  <h4 class="dropdown-heading">Categories</h4>
-                                                  <ul class="dropdown-list">
-                                                       <li><a href="#">Lifestyle</a></li>
-                                                       <li><a href="#">Fashion</a></li>
-                                                       <li><a href="#">Technology</a></li>
-                                                       <li><a href="#">Health</a></li>
-                                                       <li><a href="#">Travel</a></li>
-                                                  </ul>
+                                        <h4 class="dropdown-heading">Kategori</h4>
+                                        <ul class="dropdown-list">
+                                             <div class="row">
+                                                  @foreach ($categories as $category)
+                                                       <div class="col-md-2">
+                                                            <li><a href="#">{{ $category->name }}</a></li>
+                                                       </div>
+                                                  @endforeach
                                              </div>
-                                        </div>
+                                        </ul>
                                    </div>
                               </div>
                          </li>
@@ -77,11 +75,9 @@
                     <li><a href="index.html">Home</a></li>
                     <li class="has-dropdown"><a>Categories</a>
                          <ul class="dropdown">
-                              <li><a href="#">Lifestyle</a></li>
-                              <li><a href="#">Fashion</a></li>
-                              <li><a href="#">Technology</a></li>
-                              <li><a href="#">Travel</a></li>
-                              <li><a href="#">Health</a></li>
+                             @foreach ($categories as $category)
+                              <li><a href="#">{{ $category->name }}</a></li>
+                             @endforeach
                          </ul>
                     </li>
                     <li><a href="about.html">About Us</a></li>

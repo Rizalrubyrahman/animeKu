@@ -10,7 +10,12 @@ class Category extends Model
 
     public function article()
     {
-        return $this->hasManyThrough(Article::class);
+        return $this->hasMany(Article::class, 'id');
+    }
+
+    public function tag()
+    {
+        return $this->hasMany(Tag::class);
     }
 
     

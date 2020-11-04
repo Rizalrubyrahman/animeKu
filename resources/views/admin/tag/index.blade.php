@@ -35,6 +35,7 @@
                                         <tr>
                                              <th class="text-center">No</th>
                                              <th>Nama</th>
+                                             <th>Kategori</th>
                                              <th class="text-center">Opsi</th>
                                         </tr>
                                    </thead>
@@ -43,6 +44,7 @@
                                         <tr>
                                              <td class="text-center">{{ $loop->iteration }}</td>
                                              <td>{{ $tag->name }}</td>
+                                             <td>{{ $tag->categories->name }}</td>
                                              <td class="text-center">
                                                   <a href="{{ url('/admin/tag/'.$tag->id.'/edit') }}" class="btn btn-sm btn-warning"><i style="color:white;" class="fa fa-pencil"></i></a>
                                                   <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tag{{ $tag->id }}">

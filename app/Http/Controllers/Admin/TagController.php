@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Tag;
+use App\{Tag, Category};
 
 class TagController extends Controller
 {
@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::orderBy('name', 'ASC')->paginate(10);
+        $tags = Tag::orderBy('category_id')->paginate(10);
         return view('admin.tag.index', compact('tags'));
     }
 
@@ -26,7 +26,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tag.create',['tag' => new Tag()]);
+        $categories = Category::all();
+        return view('admin.tag.create',['tag' => new Tag(), 'categories' => $categories]);
     }
 
     /**
@@ -37,7 +38,10 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required']);
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required'
+        ]);
 
         $attr = $request->all();
         $attr['slug'] = \Str::slug($request->name);
@@ -63,7 +67,8 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('admin.tag.edit', compact('tag'));
+        $categories = Category::all();
+        return view('admin.tag.edit', compact('tag', 'categories'));
     }
 
     /**
@@ -75,7 +80,10 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        $request->validate(['name' => 'required']);
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required'
+        ]);
 
         $attr = $request->all();
         $attr['slug'] = \Str::slug($request->name);
