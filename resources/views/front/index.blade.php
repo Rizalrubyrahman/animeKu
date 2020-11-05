@@ -18,7 +18,13 @@
 							<h3 class="post-title title-lg"><a href="blog-post.html">{{ $new->title }}</a></h3>
 							<ul class="post-meta">
 								<li><a href="author.html">{{ $new->user->name }}</a></li>
-								<li>{{ $new->created_at->diffForHumans() }} - {{ date('d-F-Y',strtotime($new->created_at))}}</li>
+								<li>
+									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+										<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+									</svg>
+									<span style="margin-left:5px;">{{ $new->created_at->diffForHumans() }}</span>
+								</li>
 							</ul>
 							
 						</div>
@@ -38,7 +44,13 @@
 								<h3 class="post-title"><a href="blog-post.html">{{ $new->title }}</a></h3>
 								<ul class="post-meta">
 									<li><a href="author.html">{{ $new->user->name }}</a></li>
-									<li>{{ $new->created_at->diffForHumans() }} - {{ date('d-F-Y', strtotime($new->created_at)) }}</li>
+									<li>
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+											<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+										</svg>
+										<span style="margin-left:5px;">{{ $new->created_at->diffForHumans() }}</span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -69,7 +81,7 @@
 							</div>
 						</div>
 						<!-- post -->
-						@foreach ($recents as $recent)
+						@foreach ($recents1 as $recent)
 							<div class="col-md-6">
 								<div class="post">
 									<a class="post-img" href="blog-post.html"><img src="{{ $recent->getImage() }}" style="height: 200px;"></a>
@@ -80,7 +92,37 @@
 										<h3 class="post-title"><a href="blog-post.html">{{ $recent->title }}</a></h3>
 										<ul class="post-meta">
 											<li><a href="author.html">{{ $recent->user->name }}</a></li>
-											<li>{{ $recent->created_at->diffForHumans() }} - {{ date('d-F-Y', strtotime($recent->created_at)) }} </li>
+											<li>
+												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+													<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+												</svg>
+												<span style="margin-left:5px;">{{ $recent->created_at->diffForHumans() }}</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						@endforeach
+						<div class="clearfix visible-md visible-lg"></div>
+						@foreach ($recents2 as $recent)
+							<div class="col-md-6">
+								<div class="post">
+									<a class="post-img" href="blog-post.html"><img src="{{ $recent->getImage() }}" style="height: 200px;"></a>
+									<div class="post-body">
+										<div class="post-category">
+											<a href="category.html">{{ $recent->categories->name }}</a>
+										</div>
+										<h3 class="post-title"><a href="blog-post.html">{{ $recent->title }}</a></h3>
+										<ul class="post-meta">
+											<li><a href="author.html">{{ $recent->user->name }}</a></li>
+											<li>
+												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+													<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+												</svg>
+												<span style="margin-left:5px;">{{ $recent->created_at->diffForHumans() }}</span>
+											</li>
 										</ul>
 									</div>
 								</div>
@@ -91,204 +133,46 @@
 					<!-- /row -->
 
 					<!-- row -->
+						
 					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title">
-								<h2 class="title">Lifestyle</h2>
-							</div>
-						</div>
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-9.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Lifestyle</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
 
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-8.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Fashion</a>
-										<a href="category.html">Lifestyle</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
+						@foreach ($categories as $category)
+							<div class="col-md-12">
+								<div class="section-title">
+									
+										<h2 class="title">{{ $category->name }}</h2>
+									
 								</div>
 							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-11.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Technology</a>
+							@foreach ($articles->where('category_id', $category->id)->take(3) as $article)
+							<!-- post -->
+								<div class="col-md-4">
+									<div class="post post-sm">
+										<a class="post-img" href="blog-post.html"><img src="{{ $article->getImage() }}" alt=""></a>
+										<div class="post-body">
+											<div class="post-category">
+												<a href="category.html">{{ $article->categories->name }}</a>
+											</div>
+											<h3 class="post-title title-sm"><a href="blog-post.html">{{ $article->title }}</a></h3>
+											<ul class="post-meta">
+												<li><a href="author.html">{{ $article->user->name }}</a></li>
+												<li>
+													<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+														<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+														<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+													</svg>
+													<span style="margin-left:5px;">{{ $article->created_at->diffForHumans() }}</span>
+												</li>
+											</ul>
+										</div>
 									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
 								</div>
-							</div>
-						</div>
-						<!-- /post -->
+							@endforeach
+						@endforeach
 					</div>
-					<!-- /row -->
-
-					<!-- row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title">
-								<h2 class="title">Fashion & Travel</h2>
-							</div>
-						</div>
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-10.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Travel</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Ne bonorum praesent cum, labitur persequeris definitionem quo cu?</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-12.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Lifestyle</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-13.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Travel</a>
-										<a href="category.html">Lifestyle</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-					</div>
-					<!-- /row -->
-
-					<!-- row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title">
-								<h2 class="title">Technology & Health</h2>
-							</div>
-						</div>
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-4.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Health</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-1.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Travel</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="col-md-4">
-							<div class="post post-sm">
-								<a class="post-img" href="blog-post.html"><img src="front/img/post-3.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-category">
-										<a href="category.html">Lifestyle</a>
-									</div>
-									<h3 class="post-title title-sm"><a href="blog-post.html">Ne bonorum praesent cum, labitur persequeris definitionem quo cu?</a></h3>
-									<ul class="post-meta">
-										<li><a href="author.html">John Doe</a></li>
-										<li>20 April 2018</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /post -->
-					</div>
-					<!-- /row -->
 				</div>
 				<div class="col-md-4">
-					<!-- ad widget-->
-					<div class="aside-widget text-center">
-						<a href="#" style="display: inline-block;margin: auto;">
-							<img class="img-responsive" src="front/img/ad-3.jpg" alt="">
-						</a>
-					</div>
-					<!-- /ad widget -->
+					
 
 					<!-- social widget -->
 					<div class="aside-widget">
@@ -384,219 +268,7 @@
 	</div>
 	<!-- /SECTION -->
 
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<!-- ad -->
-				<div class="col-md-12 section-row text-center">
-					<a href="#" style="display: inline-block;margin: auto;">
-						<img class="img-responsive" src="front/img/ad-2.jpg" alt="">
-					</a>
-				</div>
-				<!-- /ad -->
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /SECTION -->
-
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-4">
-					<div class="section-title">
-						<h2 class="title">Lifestyle</h2>
-					</div>
-					<!-- post -->
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="front/img/post-6.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Fashion</a>
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-				<div class="col-md-4">
-					<div class="section-title">
-						<h2 class="title">Fashion</h2>
-					</div>
-					<!-- post -->
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="front/img/post-5.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-				<div class="col-md-4">
-					<div class="section-title">
-						<h2 class="title">Health</h2>
-					</div>
-					<!-- post -->
-					<div class="post">
-						<a class="post-img" href="blog-post.html"><img src="front/img/post-9.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-			</div>
-			<!-- /row -->
-
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-4">
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-1.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Travel</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-2.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Technology</a>
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-3.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-				<div class="col-md-4">
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-4.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Health</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Ne bonorum praesent cum, labitur persequeris definitionem quo cu?</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- /post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-5.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Health</a>
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-6.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Fashion</a>
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-				<div class="col-md-4">
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-8.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Travel</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-9.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Technology</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-widget">
-						<a class="post-img" href="blog-post.html"><img src="front/img/widget-10.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /SECTION -->
-
+	
 	<!-- SECTION -->
 	<div class="section">
 		<!-- container -->
@@ -606,7 +278,7 @@
 				<div class="col-md-8">
 					@foreach ($articles as $article)
 						<div class="post post-row">
-							<a class="post-img" href=""><img src="{{ $article->getImage() }}" style="width:250px; height:170px;"></a>
+							<a class="post-img" href=""><img src="{{ $article->getImage() }}" style="margin-top:5px; width:250px; height:170px;"></a>
 							<div class="post-body">
 								<div class="post-category">
 									<a href="">{{ $article->categories->name }}</a>
@@ -614,7 +286,13 @@
 								</div>
 								<h3 class="post-title"><a href="">{{ $article->title }}</a></h3>
 								<ul class="post-meta">
-									<li>{{ date('d-F-Y', strtotime($article->created_at)) }}</li>
+									<li>
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+											<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+										</svg>
+										<span style="margin-left:5px;">{{ $article->created_at->diffForHumans() }}</span>
+									</li>
 								</ul>
 								<p>{{ \Str::limit($article->body, '100', '.') }}</p>
 							</div>
@@ -631,26 +309,10 @@
 						<div class="section-title">
 							<h2 class="title">Instagram</h2>
 						</div>
-						<div class="galery-widget">
-							<ul>
-								<li><a href="#"><img src="front/img/galery-1.jpg" alt=""></a></li>
-								<li><a href="#"><img src="front/img/galery-2.jpg" alt=""></a></li>
-								<li><a href="#"><img src="front/img/galery-3.jpg" alt=""></a></li>
-								<li><a href="#"><img src="front/img/galery-4.jpg" alt=""></a></li>
-								<li><a href="#"><img src="front/img/galery-5.jpg" alt=""></a></li>
-								<li><a href="#"><img src="front/img/galery-6.jpg" alt=""></a></li>
-							</ul>
-						</div>
+						
 					</div>
 					<!-- /galery widget -->
 
-					<!-- Ad widget -->
-					<div class="aside-widget text-center">
-						<a href="#" style="display: inline-block;margin: auto;">
-							<img class="img-responsive" src="front/img/ad-1.jpg" alt="">
-						</a>
-					</div>
-					<!-- /Ad widget -->
 				</div>
 			</div>
 			<!-- /row -->

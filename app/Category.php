@@ -13,10 +13,5 @@ class Category extends Model
         return $this->hasMany(Article::class, 'id');
     }
 
-    public function tag()
-    {
-        return $this->hasMany(Tag::class);
-    }
-
     
 }
