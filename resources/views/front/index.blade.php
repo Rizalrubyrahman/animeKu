@@ -18,7 +18,7 @@
 							<h3 class="post-title title-lg"><a href="blog-post.html">{{ $new->title }}</a></h3>
 							<ul class="post-meta">
 								<li><a href="author.html">John Doe</a></li>
-								<li>{{ date('d-F-Y',strtotime($new->created_at))}}</li>
+								<li>{{ $new->created_at->diffForHumans() }} - {{ date('d-F-Y',strtotime($new->created_at))}}</li>
 							</ul>
 							
 						</div>
@@ -38,7 +38,7 @@
 								<h3 class="post-title"><a href="blog-post.html">{{ $new->ttile }}</a></h3>
 								<ul class="post-meta">
 									<li><a href="author.html">John Doe</a></li>
-									<li>{{ date('d-F-Y', strtotime($new->created_at)) }}</li>
+									<li>{{ $new->created_at->diffForHumans() }} - {{ date('d-F-Y', strtotime($new->created_at)) }}</li>
 								</ul>
 							</div>
 						</div>
@@ -69,18 +69,18 @@
 							</div>
 						</div>
 						<!-- post -->
-						@foreach ($recents as $new)
+						@foreach ($recents as $recent)
 							<div class="col-md-6">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="{{ $new->getImage() }}" style="height: 200px;"></a>
+									<a class="post-img" href="blog-post.html"><img src="{{ $recent->getImage() }}" style="height: 200px;"></a>
 									<div class="post-body">
 										<div class="post-category">
-											<a href="category.html">{{ $new->categories->name }}</a>
+											<a href="category.html">{{ $recent->categories->name }}</a>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html">{{ $new->title }}</a></h3>
+										<h3 class="post-title"><a href="blog-post.html">{{ $recent->title }}</a></h3>
 										<ul class="post-meta">
 											<li><a href="author.html">John Doe</a></li>
-											<li>{{ date('d-F-Y', strtotime($new->created_at)) }}</li>
+											<li>{{ $recent->created_at->diffForHumans() }} - {{ date('d-F-Y', strtotime($recent->created_at)) }} </li>
 										</ul>
 									</div>
 								</div>
@@ -642,9 +642,6 @@
 							<div class="post-body">
 								<div class="post-category">
 									<a href="">{{ $article->categories->name }}</a>
-									@foreach ($article->tags as $tag)
-										<a href="">{{ $tag->name }}</a>
-									@endforeach
 									
 								</div>
 								<h3 class="post-title"><a href="">{{ $article->title }}</a></h3>

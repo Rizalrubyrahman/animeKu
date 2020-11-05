@@ -54,7 +54,7 @@
                                         <ul class="dropdown-list">
                                              <div class="row">
                                                   @foreach ($categories as $category)
-                                                       <div class="col-md-2">
+                                                       <div class="col-md-3">
                                                             <li><a href="#">{{ $category->name }}</a></li>
                                                        </div>
                                                   @endforeach

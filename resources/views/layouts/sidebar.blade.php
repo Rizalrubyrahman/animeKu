@@ -36,13 +36,7 @@
                          </span>
                     </a>
                </li>
-               <li class="treeview">
-                    <a href="{{ url('admin/tag') }}">
-                         <i class="fa fa-tags"></i> <span>Tag</span>
-                         <span class="pull-right-container">
-                         </span>
-                    </a>
-               </li>
+               
 
 
           </ul>
