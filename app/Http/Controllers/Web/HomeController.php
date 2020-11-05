@@ -15,7 +15,7 @@ class HomeController extends Controller
       $articles = Article::orderBy('created_at', 'DESC')->get();
       $new = Article::latest()->first();
       $news = Article::latest()->skip(1)->take(2)->get();
-      $recents = Article::latest()->skip(3)->take(4)->get();
+      $recents = Article::latest()->skip(3)->take(2)->get();
 
       
      

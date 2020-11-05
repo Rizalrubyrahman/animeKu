@@ -35,7 +35,7 @@
                                         <tr>
                                              <th class="text-center">No</th>
                                              <th>Judul</th>
-                                             <th>Tag</th>
+                                             <th>Author</th>
                                              <th>Kategori</th>
                                              <th class="text-center">Gambar</th>
                                              <th class="text-center">Opsi</th>
@@ -46,11 +46,7 @@
                                         <tr>
                                              <td style="line-height:100px;" class="text-center">{{ $loop->iteration }}</td>
                                              <td style="line-height:100px;">{{ $article->title }}</td>
-                                             <td style="line-height: 100px;">
-                                                  @foreach ($article->tags as $tag)
-                                                  {{ $tag->name }},   
-                                                  @endforeach
-                                             </td>
+                                             <td style="line-height:100px;">{{ $article->user->name }}</td>
                                              <td style="line-height:100px;">{{ $article->categories->name }}</td>
                                              <td class="text-center"><img style="height:100px; width:100px; " src="{{ $article->getImage() }}"></td>
                                              <td style="width: 100px; line-height: 100px;" class="text-center">

@@ -17,7 +17,7 @@
 							</div>
 							<h3 class="post-title title-lg"><a href="blog-post.html">{{ $new->title }}</a></h3>
 							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
+								<li><a href="author.html">{{ $new->user->name }}</a></li>
 								<li>{{ $new->created_at->diffForHumans() }} - {{ date('d-F-Y',strtotime($new->created_at))}}</li>
 							</ul>
 							
@@ -35,9 +35,9 @@
 								<div class="post-category">
 									<a href="category.html">{{ $new->categories->name }}</a>
 								</div>
-								<h3 class="post-title"><a href="blog-post.html">{{ $new->ttile }}</a></h3>
+								<h3 class="post-title"><a href="blog-post.html">{{ $new->title }}</a></h3>
 								<ul class="post-meta">
-									<li><a href="author.html">John Doe</a></li>
+									<li><a href="author.html">{{ $new->user->name }}</a></li>
 									<li>{{ $new->created_at->diffForHumans() }} - {{ date('d-F-Y', strtotime($new->created_at)) }}</li>
 								</ul>
 							</div>
@@ -79,7 +79,7 @@
 										</div>
 										<h3 class="post-title"><a href="blog-post.html">{{ $recent->title }}</a></h3>
 										<ul class="post-meta">
-											<li><a href="author.html">John Doe</a></li>
+											<li><a href="author.html">{{ $recent->user->name }}</a></li>
 											<li>{{ $recent->created_at->diffForHumans() }} - {{ date('d-F-Y', strtotime($recent->created_at)) }} </li>
 										</ul>
 									</div>
@@ -300,57 +300,25 @@
 								<li>
 									<a href="#" class="social-facebook">
 										<i class="fa fa-facebook"></i>
-										<span>21.2K<br>Followers</span>
+										
 									</a>
 								</li>
 								<li>
 									<a href="#" class="social-twitter">
 										<i class="fa fa-twitter"></i>
-										<span>10.2K<br>Followers</span>
+										
 									</a>
 								</li>
 								<li>
 									<a href="#" class="social-google-plus">
 										<i class="fa fa-google-plus"></i>
-										<span>5K<br>Followers</span>
+										
 									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 					<!-- /social widget -->
-
-					<!-- category widget -->
-					<div class="aside-widget">
-						<div class="section-title">
-							<h2 class="title">Categories</h2>
-						</div>
-						<div class="category-widget">
-							<ul>
-								<li><a href="#">Lifestyle <span>451</span></a></li>
-								<li><a href="#">Fashion <span>230</span></a></li>
-								<li><a href="#">Technology <span>40</span></a></li>
-								<li><a href="#">Travel <span>38</span></a></li>
-								<li><a href="#">Health <span>24</span></a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- /category widget -->
-
-					<!-- newsletter widget -->
-					<div class="aside-widget">
-						<div class="section-title">
-							<h2 class="title">Newsletter</h2>
-						</div>
-						<div class="newsletter-widget">
-							<form>
-								<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.</p>
-								<input class="input" name="newsletter" placeholder="Enter Your Email">
-								<button class="primary-button">Subscribe</button>
-							</form>
-						</div>
-					</div>
-					<!-- /newsletter widget -->
 
 					<!-- post widget -->
 					<div class="aside-widget">

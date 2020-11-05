@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['category_id','title','body','image'];
+    protected $fillable = ['user_id','category_id','title','body','image','view','slug'];
 
     public function categories()
     {
@@ -16,5 +16,10 @@ class Article extends Model
     public function getImage()
     {
         return asset('storage/'.$this->image);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -24,23 +24,6 @@
 </div>
 
 <div class="form-group">
-     <label for="tag">Tag</label>
-     <select class="form-control js-example-basic-multiple" name="tag[]" multiple>
-          @foreach ($artikel->tags as $tag)
-              <option selected value="{{ $tag->id }}">{{ $tag->name }}</option>
-          @endforeach
-          @foreach ($tags as $tag)
-              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-          @endforeach
-     </select>
-     @error('category')
-         <div class="text-danger mt-2">
-              {{ $message }}
-         </div>
-     @enderror
-</div>
-
-<div class="form-group">
      <label for="image">Gambar</label>
      <input type="file" name="image" id="image" value="{{ old('image') ?? $artikel->image }}" class="form-control">
      @error('image')

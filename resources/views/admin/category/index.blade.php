@@ -39,9 +39,12 @@
                                         </tr>
                                    </thead>
                                    <tbody>
+                                        @php
+                                            $no = 0;
+                                        @endphp
                                         @forelse ($categories as $category)
                                         <tr>
-                                             <td class="text-center">{{ $loop->iteration }}</td>
+                                             <td class="text-center">{{ $no++ + $categories->firstItem()}}</td>
                                              <td>{{ $category->name }}</td>
                                              <td class="text-center">
                                                   <a href="{{ url('/admin/kategori/'.$category->id.'/edit') }}" class="btn btn-sm btn-warning"><i style="color:white;" class="fa fa-pencil"></i></a>
