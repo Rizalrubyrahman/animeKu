@@ -10,20 +10,24 @@
 				<div class="col-md-8 hot-post-left">
 					<!-- post -->
 					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="{{ $new->getImage() }}" style="height: 510px;"></a>
+						<div class="badge badge-primary" style="position: absolute; z-index:99; margin-top:20px; margin-left:20px;">
+							<i class="fa fa-eye" style="font-size: 16px;"></i>
+							<span style="margin-left:5px; margin-top:-100px;">{{ $articles->first()->view }}</span>
+						</div>
+						<a class="post-img" href="{{ url($articles->first()->slug) }}"><img src="{{ $articles->first()->getImage() }}" style="height: 510px;"></a>
 						<div class="post-body">
 							<div class="post-category">
-								<a href="category.html">{{ $new->categories->name }}</a>
+								<a href="{{ url($articles->first()->categories->slug) }}">{{ $articles->first()->categories->name }}</a>
 							</div>
-							<h3 class="post-title title-lg"><a href="blog-post.html">{{ $new->title }}</a></h3>
+							<h3 class="post-title title-lg"><a href="{{ url($articles->first()->slug) }}">{{ $articles->first()->title }}</a></h3>
 							<ul class="post-meta">
-								<li><a href="author.html">{{ $new->user->name }}</a></li>
+								<li><a href="author.html">{{ $articles->first()->user->name }}</a></li>
 								<li>
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
 										<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
 									</svg>
-									<span style="margin-left:5px;">{{ $new->created_at->diffForHumans() }}</span>
+									<span style="margin-left:5px;">{{ $articles->first()->created_at->diffForHumans() }}</span>
 								</li>
 							</ul>
 							
@@ -34,22 +38,26 @@
 				<div class="col-md-4 hot-post-right">
 					<!-- post -->
 					
-						@foreach ($news as $new)
+					@foreach ($articles->skip(1)->take(2) as $article)
 						<div class="post post-thumb" >
-							<a class="post-img" href="blog-post.html"><img src="{{ $new->getImage() }}" style="height: 252px;"></a>
+							<div class="badge badge-primary" style="position: absolute; z-index:99; margin-top:10px; margin-left:10px;">
+								<i class="fa fa-eye" style="font-size: 16px;"></i>
+								<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
+							</div>
+							<a class="post-img" href="{{ url($article->slug) }}"><img src="{{ $article->getImage() }}" style="height: 252px;"></a>
 							<div class="post-body">
 								<div class="post-category">
-									<a href="category.html">{{ $new->categories->name }}</a>
+									<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
 								</div>
-								<h3 class="post-title"><a href="blog-post.html">{{ $new->title }}</a></h3>
+								<h3 class="post-title"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 								<ul class="post-meta">
-									<li><a href="author.html">{{ $new->user->name }}</a></li>
+									<li><a href="author.html">{{ $article->user->name }}</a></li>
 									<li>
 										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
 											<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
 										</svg>
-										<span style="margin-left:5px;">{{ $new->created_at->diffForHumans() }}</span>
+										<span style="margin-left:5px;">{{ $article->created_at->diffForHumans() }}</span>
 									</li>
 								</ul>
 							</div>
@@ -81,23 +89,27 @@
 							</div>
 						</div>
 						<!-- post -->
-						@foreach ($recents1 as $recent)
+						@foreach ($articles->skip(3)->take(2) as $article)
 							<div class="col-md-6">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="{{ $recent->getImage() }}" style="height: 200px;"></a>
+									<div class="badge badge-primary" style="position: absolute; z-index:99; margin-top:10px; margin-left:10px;">
+										<i class="fa fa-eye" style="font-size: 16px;"></i>
+										<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
+									</div>
+									<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" style="height: 200px;"></a>
 									<div class="post-body">
 										<div class="post-category">
-											<a href="category.html">{{ $recent->categories->name }}</a>
+											<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html">{{ $recent->title }}</a></h3>
+										<h3 class="post-title"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 										<ul class="post-meta">
-											<li><a href="author.html">{{ $recent->user->name }}</a></li>
+											<li><a href="author.html">{{ $article->user->name }}</a></li>
 											<li>
 												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 													<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
 													<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
 												</svg>
-												<span style="margin-left:5px;">{{ $recent->created_at->diffForHumans() }}</span>
+												<span style="margin-left:5px;">{{ $article->created_at->diffForHumans() }}</span>
 											</li>
 										</ul>
 									</div>
@@ -105,23 +117,27 @@
 							</div>
 						@endforeach
 						<div class="clearfix visible-md visible-lg"></div>
-						@foreach ($recents2 as $recent)
+						@foreach ($articles->skip(5)->take(2) as $article)
 							<div class="col-md-6">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="{{ $recent->getImage() }}" style="height: 200px;"></a>
+									<div class="badge badge-primary" style="position: absolute; z-index:99; margin-top:10px; margin-left:10px;">
+										<i class="fa fa-eye" style="font-size: 16px;"></i>
+										<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
+									</div>
+									<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" style="height: 200px;"></a>
 									<div class="post-body">
 										<div class="post-category">
-											<a href="category.html">{{ $recent->categories->name }}</a>
+											<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html">{{ $recent->title }}</a></h3>
+										<h3 class="post-title"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 										<ul class="post-meta">
-											<li><a href="author.html">{{ $recent->user->name }}</a></li>
+											<li><a href="author.html">{{ $article->user->name }}</a></li>
 											<li>
 												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 													<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
 													<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
 												</svg>
-												<span style="margin-left:5px;">{{ $recent->created_at->diffForHumans() }}</span>
+												<span style="margin-left:5px;">{{ $article->created_at->diffForHumans() }}</span>
 											</li>
 										</ul>
 									</div>
@@ -148,12 +164,16 @@
 							<!-- post -->
 								<div class="col-md-4">
 									<div class="post post-sm">
-										<a class="post-img" href="blog-post.html"><img src="{{ $article->getImage() }}" alt=""></a>
+										<div class="badge badge-primary" style="position: absolute; z-index:99; margin-top:10px; margin-left:10px;">
+											<i class="fa fa-eye" style="font-size: 16px;"></i>
+											<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
+										</div>
+										<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" alt=""></a>
 										<div class="post-body">
 											<div class="post-category">
-												<a href="category.html">{{ $article->categories->name }}</a>
+												<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
 											</div>
-											<h3 class="post-title title-sm"><a href="blog-post.html">{{ $article->title }}</a></h3>
+											<h3 class="post-title title-sm"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 											<ul class="post-meta">
 												<li><a href="author.html">{{ $article->user->name }}</a></li>
 												<li>
@@ -182,20 +202,26 @@
 						<div class="social-widget">
 							<ul>
 								<li>
-									<a href="#" class="social-facebook">
+									<a href="https://facebook.com/rizalruby.rahman.1" class="social-facebook">
 										<i class="fa fa-facebook"></i>
 										
 									</a>
 								</li>
 								<li>
-									<a href="#" class="social-twitter">
-										<i class="fa fa-twitter"></i>
+									<a href="https://github.com/Rizalrubyrahman" class="social" style="background-color: black;">
+										<i class="fa fa-github"></i>
 										
 									</a>
 								</li>
 								<li>
-									<a href="#" class="social-google-plus">
-										<i class="fa fa-google-plus"></i>
+									<a href="https://www.instagram.com/rizalrrhmn/" class="social" style="background-color: #7232bd;">
+										<i class="fa fa-instagram"></i>
+										
+									</a>
+								</li>
+								<li>
+									<a href="mailto:rizalrubyr@gmail.com" class="social-google-plus">
+										<i class="fa fa-google"></i>
 										
 									</a>
 								</li>
@@ -209,55 +235,19 @@
 						<div class="section-title">
 							<h2 class="title">Popular Posts</h2>
 						</div>
-						<!-- post -->
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="front/img/widget-3.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-category">
-									<a href="category.html">Lifestyle</a>
+						@foreach ($populer as $post)
+						    <!-- post -->
+								<div class="post post-widget">
+									<a class="post-img" href="{{ $post->slug }}"><img style="margin-top:9px;" src="{{ $post->getImage() }}" alt=""></a>
+									<div class="post-body">
+										<div class="post-category">
+											<a href="{{ url($post->categories->slug) }}">{{ $post->categories->name }}</a>
+										</div>
+										<h3 class="post-title"><a href="{{ $post->slug }}">{{ $post->title }}</a></h3>
+									</div>
 								</div>
-								<h3 class="post-title"><a href="blog-post.html">Ne bonorum praesent cum, labitur persequeris definitionem quo cu?</a></h3>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="front/img/widget-2.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-category">
-									<a href="category.html">Technology</a>
-									<a href="category.html">Lifestyle</a>
-								</div>
-								<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="front/img/widget-4.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-category">
-									<a href="category.html">Health</a>
-								</div>
-								<h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-							</div>
-						</div>
-						<!-- /post -->
-
-						<!-- post -->
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="front/img/widget-5.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-category">
-									<a href="category.html">Health</a>
-									<a href="category.html">Lifestyle</a>
-								</div>
-								<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-							</div>
-						</div>
-						<!-- /post -->
+							<!-- /post -->
+						@endforeach
 					</div>
 					<!-- /post widget -->
 				</div>
@@ -276,15 +266,19 @@
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-8">
-					@foreach ($articles as $article)
+						@foreach ($articles as $article)
 						<div class="post post-row">
-							<a class="post-img" href=""><img src="{{ $article->getImage() }}" style="margin-top:5px; width:250px; height:170px;"></a>
+							<div class="badge badge-primary" style="position: absolute; z-index:99; margin-top:15px; margin-left:10px;">
+								<i class="fa fa-eye" style="font-size: 16px;"></i>
+								<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
+							</div>
+							<a class="post-img" href="{{ url($article->slug) }}"><img src="{{ $article->getImage() }}" style="margin-top:5px; width:250px; height:170px;"></a>
 							<div class="post-body">
 								<div class="post-category">
 									<a href="">{{ $article->categories->name }}</a>
 									
 								</div>
-								<h3 class="post-title"><a href="">{{ $article->title }}</a></h3>
+								<h3 class="post-title"><a href="{{ url($article->slug) }}">{{ $article->title }}</a></h3>
 								<ul class="post-meta">
 									<li>
 										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

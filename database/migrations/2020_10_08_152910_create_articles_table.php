@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('image');
-            $table->string('view', 100)->nullable()->default(0);
+            $table->integer('view')->nullable()->default(0);
             $table->timestamps();
         });
     }

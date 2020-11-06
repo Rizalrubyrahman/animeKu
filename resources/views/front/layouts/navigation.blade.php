@@ -6,10 +6,10 @@
                <div class="container">
                     <!-- social -->
                     <ul class="nav-social">
-                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                         <li><a href="https://facebook.com/rizalruby.rahman.1"><i class="fa fa-facebook"></i></a></li>
+                         <li><a href="https://github.com/Rizalrubyrahman"><i class="fa fa-github"></i></a></li>
+                         <li><a href="mailto:rizalrubyr@gmail.com"><i class="fa fa-google"></i></a></li>
+                         <li><a href="https://www.instagram.com/rizalrrhmn/"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                     <!-- /social -->
 
@@ -38,7 +38,7 @@
           <!-- /Top Nav -->
 
           <!-- Main Nav -->
-          <div id="nav-bottom">
+          <div id="nav-bottom" style="z-index: 9999; position:relative;">
                <div class="container">
                     <!-- nav -->
                     <ul class="nav-menu">
@@ -55,7 +55,7 @@
                                              <div class="row">
                                                   @foreach ($categories as $category)
                                                        <div class="col-md-3">
-                                                            <li><a href="#">{{ $category->name }}</a></li>
+                                                            <li><a href="{{ url($category->slug) }}">{{ $category->name }}</a></li>
                                                        </div>
                                                   @endforeach
                                              </div>
@@ -72,7 +72,7 @@
           <!-- Aside Nav -->
           <div id="nav-aside">
                <ul class="nav-aside-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li class="has-dropdown"><a>Categories</a>
                          <ul class="dropdown">
                              @foreach ($categories as $category)
@@ -80,9 +80,7 @@
                              @endforeach
                          </ul>
                     </li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contacts</a></li>
-                    <li><a href="#">Advertise</a></li>
+                    
                </ul>
                <button class="nav-close nav-aside-close"><span></span></button>
           </div>

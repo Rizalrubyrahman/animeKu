@@ -12,13 +12,23 @@ class HomeController extends Controller
    public function index()
    {
       $categories = Category::all();
-      $articles = Article::orderBy('created_at', 'DESC')->get();
-      $new = Article::latest()->first();
-      $news = Article::latest()->skip(1)->take(2)->get();
-      $recents1 = Article::latest()->skip(3)->take(2)->get();
-      $recents2 = Article::latest()->skip(5)->take(2)->get();
-      $beritas = Article::groupBy('category_id')->get();
+      $articles = Article::latest()->get();
+      $populer = Article::orderBy('view', 'DESC')->take(4)->get();
      
-      return view('front.index',compact('articles','categories','news','new','recents1','recents2','beritas'));
+      return view('front.index',compact('articles', 'categories', 'populer'));
+   }
+
+   public function detail(Article $article)
+   {
+      $no = 0;
+      $article->update([
+         'view' => $article->view + 1
+      ]);
+      
+
+      $populer = Article::orderBy('view', 'DESC')->take(4)->get();
+      $articles = Article::all();
+      $categories = Category::all();
+      return view('front.detail',compact('article','categories', 'articles', 'populer'));
    }
 }
