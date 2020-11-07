@@ -1,5 +1,6 @@
 @extends('front.layouts.master')
 
+@section('title', 'Detail Post')
 @section('content')
     <!-- PAGE HEADER -->
 		<div id="post-header" class="page-header">
@@ -8,11 +9,11 @@
 				<div class="row">
 					<div class="col-md-10">
 						<div class="post-category">
-							<a href="category.html">{{ $article->categories->name }}</a>
+							<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
 						</div>
 						<h1>{{ $article->title }}</h1>
 						<ul class="post-meta">
-							<li><a href="author.html">{{ $article->user->name }}</a></li>
+							<li><a>{{ $article->user->name }}</a></li>
 							<li>{{ $article->created_at->diffForHumans() }}</li>
 							<li><i class="fa fa-eye"></i> {{ $article->view }}</li>
 						</ul>
@@ -51,7 +52,7 @@
 						<div class="post-tags">
 							<ul>
 								<li>Category:</li>
-								<li><a href="#">{{ $article->categories->name }}</a></li>
+								<li><a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a></li>
 								
 							</ul>
 						</div>
@@ -61,11 +62,11 @@
 					<!-- post author -->
 					<div class="section-row">
 						<div class="section-title">
-							<h3 class="title">About <a href="author.html">{{ $article->user->name }}</a></h3>
+							<h3 class="title">About <a>{{ $article->user->name }}</a></h3>
 						</div>
 						<div class="author media">
 							<div class="media-left">
-								<a href="author.html">
+								<a>
 									<img class="author-img media-object" src="{{ asset('storage/image/rizal.jpg') }}" alt="">
 								</a>
 							</div>
@@ -99,11 +100,11 @@
                                                   <a class="post-img" href="{{ url($article->slug) }}"><img src="{{ $article->getImage() }}"></a>
                                                   <div class="post-body">
                                                        <div class="post-category">
-                                                            <a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
+                                                            <a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
                                                        </div>
                                                        <h3 class="post-title title-sm"><a href="{{ url($article->slug) }}l">{{ $article->title }}</a></h3>
                                                        <ul class="post-meta">
-                                                            <li><a href="author.html">{{ $article->user->name }}</a></li>
+                                                            <li><a>{{ $article->user->name }}</a></li>
                                                             <li>{{ $article->created_at->diffForHumans() }}</li>
                                                        </ul>
                                                   </div>
@@ -253,7 +254,7 @@
 						<div class="category-widget">
 							<ul>
                                         @foreach ($categories as $category)
-                                            <li><a href="{{ url($category->slug) }}">{{ $category->name }} <span>{{ $article->where('category_id', $category->id)->count() }}</span></a></li>
+                                            <li><a href="{{ url('kategori/'.$category->slug) }}">{{ $category->name }} <span>{{ $article->where('category_id', $category->id)->count() }}</span></a></li>
                                         @endforeach
 							</ul>
 						</div>
@@ -272,7 +273,7 @@
                                              <a class="post-img" href="{{ url($post->slug) }}"><img style="margin-top:9px;" src="{{ $post->getImage() }}" alt=""></a>
                                              <div class="post-body">
                                                   <div class="post-category">
-                                                       <a href="{{ url($post->categories->slug) }}">{{ $post->categories->name }}</a>
+                                                       <a href="{{ url('kategori/'.$post->categories->slug) }}">{{ $post->categories->name }}</a>
                                                   </div>
                                                   <h3 class="post-title"><a href="{{ url($post->slug) }}">{{ $post->title }}</a></h3>
                                              </div>
@@ -284,24 +285,11 @@
 
 					<!-- galery widget -->
 					<div class="aside-widget">
-						<div class="section-title">
-							<h2 class="title">Instagram</h2>
-						</div>
-						<div class="galery-widget">
-							<ul>
-								<li><a href="#"></a></li>
-							</ul>
-						</div>
+						<div style="margin-top:-70px;" id="kopi-covid"></div>
 					</div>
 					<!-- /galery widget -->
 
-					<!-- Ad widget -->
-					<div class="aside-widget text-center">
-						<a href="#" style="display: inline-block;margin: auto;">
-							<img class="img-responsive" src="./img/ad-1.jpg" alt="">
-						</a>
-					</div>
-					<!-- /Ad widget -->
+					
 				</div>
 			</div>
 			<!-- /row -->

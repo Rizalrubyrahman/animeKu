@@ -1,5 +1,7 @@
 @extends('front.layouts.master')
 
+@section('title','Home')
+
 @section('content')
     <!-- SECTION -->
 	<div class="section">
@@ -17,11 +19,11 @@
 						<a class="post-img" href="{{ url($articles->first()->slug) }}"><img src="{{ $articles->first()->getImage() }}" style="height: 510px;"></a>
 						<div class="post-body">
 							<div class="post-category">
-								<a href="{{ url($articles->first()->categories->slug) }}">{{ $articles->first()->categories->name }}</a>
+								<a href="{{ url('kategori/'.$articles->first()->categories->slug) }}">{{ $articles->first()->categories->name }}</a>
 							</div>
 							<h3 class="post-title title-lg"><a href="{{ url($articles->first()->slug) }}">{{ $articles->first()->title }}</a></h3>
 							<ul class="post-meta">
-								<li><a href="author.html">{{ $articles->first()->user->name }}</a></li>
+								<li><a>{{ $articles->first()->user->name }}</a></li>
 								<li>
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -47,11 +49,11 @@
 							<a class="post-img" href="{{ url($article->slug) }}"><img src="{{ $article->getImage() }}" style="height: 252px;"></a>
 							<div class="post-body">
 								<div class="post-category">
-									<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
+									<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
 								</div>
 								<h3 class="post-title"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 								<ul class="post-meta">
-									<li><a href="author.html">{{ $article->user->name }}</a></li>
+									<li><a>{{ $article->user->name }}</a></li>
 									<li>
 										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -99,11 +101,11 @@
 									<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" style="height: 200px;"></a>
 									<div class="post-body">
 										<div class="post-category">
-											<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
+											<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
 										</div>
 										<h3 class="post-title"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 										<ul class="post-meta">
-											<li><a href="author.html">{{ $article->user->name }}</a></li>
+											<li><a>{{ $article->user->name }}</a></li>
 											<li>
 												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 													<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -127,11 +129,11 @@
 									<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" style="height: 200px;"></a>
 									<div class="post-body">
 										<div class="post-category">
-											<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
+											<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
 										</div>
 										<h3 class="post-title"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 										<ul class="post-meta">
-											<li><a href="author.html">{{ $article->user->name }}</a></li>
+											<li><a>{{ $article->user->name }}</a></li>
 											<li>
 												<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 													<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -171,11 +173,11 @@
 										<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" alt=""></a>
 										<div class="post-body">
 											<div class="post-category">
-												<a href="{{ url($article->categories->slug) }}">{{ $article->categories->name }}</a>
+												<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
 											</div>
 											<h3 class="post-title title-sm"><a href="{{ $article->slug }}">{{ $article->title }}</a></h3>
 											<ul class="post-meta">
-												<li><a href="author.html">{{ $article->user->name }}</a></li>
+												<li><a>{{ $article->user->name }}</a></li>
 												<li>
 													<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 														<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
@@ -241,7 +243,7 @@
 									<a class="post-img" href="{{ $post->slug }}"><img style="margin-top:9px;" src="{{ $post->getImage() }}" alt=""></a>
 									<div class="post-body">
 										<div class="post-category">
-											<a href="{{ url($post->categories->slug) }}">{{ $post->categories->name }}</a>
+											<a href="{{ url('kategori/'.$post->categories->slug) }}">{{ $post->categories->name }}</a>
 										</div>
 										<h3 class="post-title"><a href="{{ $post->slug }}">{{ $post->title }}</a></h3>
 									</div>
@@ -272,10 +274,10 @@
 								<i class="fa fa-eye" style="font-size: 16px;"></i>
 								<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
 							</div>
-							<a class="post-img" href="{{ url($article->slug) }}"><img src="{{ $article->getImage() }}" style="margin-top:5px; width:250px; height:170px;"></a>
+							<a class="post-img" href="{{ url($article->slug) }}"><img src="{{ $article->getImage() }}" style="margin-top:5px; width:280px; height:170px;"></a>
 							<div class="post-body">
 								<div class="post-category">
-									<a href="">{{ $article->categories->name }}</a>
+									<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>
 									
 								</div>
 								<h3 class="post-title"><a href="{{ url($article->slug) }}">{{ $article->title }}</a></h3>
@@ -300,9 +302,7 @@
 				<div class="col-md-4">
 					<!-- galery widget -->
 					<div class="aside-widget">
-						<div class="section-title">
-							<h2 class="title">Instagram</h2>
-						</div>
+						<div style="margin-top:-70px;" id="kopi-covid"></div>
 						
 					</div>
 					<!-- /galery widget -->

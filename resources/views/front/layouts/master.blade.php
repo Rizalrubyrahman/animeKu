@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Callie HTML Template</title>
+	<title>@yield('title')</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
@@ -32,6 +32,17 @@
 	<script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('front/js/jquery.stellar.min.js') }}"></script>
 	<script src="{{ asset('front/js/main.js') }}"></script>
+	<script>
+		var f = document.createElement("iframe");
+		f.src = "https://kopi.dev/widget-covid-19/";
+		f.width = "100%";
+		f.height = 380;
+		f.scrolling = "no";
+		f.frameBorder = 0;
+		var rootEl = document.getElementById("kopi-covid");
+		console.log(rootEl);
+		rootEl.appendChild(f);
+	   </script>
 
 </body>
 

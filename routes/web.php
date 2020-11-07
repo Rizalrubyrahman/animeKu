@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Web\HomeController@index');
-Route::get('{article:slug}','Web\HomeController@detail');
-
 Auth::routes();
 
 Route::namespace('Admin')->middleware('auth')->group(function(){
@@ -22,3 +19,8 @@ Route::namespace('Admin')->middleware('auth')->group(function(){
     Route::resource('admin/kategori', 'CategoryController');
     Route::resource('admin/artikel', 'ArticleController'); 
 });
+
+
+Route::get('/', 'Web\HomeController@index');
+Route::get('{article:slug}','Web\HomeController@detail');
+Route::get('/kategori/{category:slug}', 'Web\HomeController@category');

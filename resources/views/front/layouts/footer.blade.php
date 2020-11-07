@@ -7,7 +7,7 @@
                <div class="col-md-6">
                     <div class="footer-widget">
                          <div class="footer-logo">
-                              <a href="index.html" class="logo"><h1 style="color: white;">LaravelBlog</h1></a>
+                              <a href="index.html" class="logo"><h1 style="color: white;">RizalBlog</h1></a>
                          </div>
                          <ul class="contact-social">
                               <li><a href="https://facebook.com/rizalruby.rahman.1" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
@@ -25,7 +25,7 @@
                                    <div class="row">
                                         @foreach ($categories as $category)
                                            <div class="col-md-6">
-                                             <li><a href="{{ $category->slug }}">{{ $category->name }}</a></li>
+                                             <li><a href="{{ url('kategori/'.$category->slug) }}">{{ $category->name }}</a></li>
                                            </div>
                                         @endforeach
                                    </div>
@@ -39,16 +39,8 @@
 
           <!-- row -->
           <div class="footer-bottom row">
-               <div class="col-md-6 col-md-push-6">
-                    <ul class="footer-nav">
-                         <li><a href="index.html">Home</a></li>
-                         <li><a href="about.html">About Us</a></li>
-                         <li><a href="contact.html">Contacts</a></li>
-                         <li><a href="#">Advertise</a></li>
-                         <li><a href="#">Privacy</a></li>
-                    </ul>
-               </div>
-               <div class="col-md-6 col-md-pull-6">
+               
+               <div class="col-md-12">
                     <div class="footer-copyright">
                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Rizal Ruby Rahman

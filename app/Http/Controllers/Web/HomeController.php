@@ -31,4 +31,11 @@ class HomeController extends Controller
       $categories = Category::all();
       return view('front.detail',compact('article','categories', 'articles', 'populer'));
    }
+
+   public function category(Category $category){
+      $articles = Article::orderBy('id', 'DESC')->where('category_id', $category->id)->get();
+      $categories = Category::all();
+      $populer = Article::orderBy('view', 'DESC')->take(4)->get();
+      return view('front.category', compact('category','articles','categories','populer'));
+   }
 }

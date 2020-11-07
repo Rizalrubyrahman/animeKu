@@ -15,7 +15,7 @@
 
                     <!-- logo -->
                     <div class="nav-logo">
-                         <a href="/" class="logo"><h1 style="position: relative; margin-top:20px;">Laravel<b>Blog</b></h1></a>
+                         <a href="/" class="logo"><h1 style="position: relative; margin-top:20px;">Rizal<b>Blog</b></h1></a>
                     </div>
                     <!-- /logo -->
 
@@ -55,7 +55,7 @@
                                              <div class="row">
                                                   @foreach ($categories as $category)
                                                        <div class="col-md-3">
-                                                            <li><a href="{{ url($category->slug) }}">{{ $category->name }}</a></li>
+                                                            <li><a href="{{ url('kategori/'.$category->slug) }}">{{ $category->name }}</a></li>
                                                        </div>
                                                   @endforeach
                                              </div>
@@ -73,10 +73,10 @@
           <div id="nav-aside">
                <ul class="nav-aside-menu">
                     <li><a href="{{ url('/') }}">Home</a></li>
-                    <li class="has-dropdown"><a>Categories</a>
+                    <li class="has-dropdown"><a>Kategori</a>
                          <ul class="dropdown">
                              @foreach ($categories as $category)
-                              <li><a href="#">{{ $category->name }}</a></li>
+                              <li><a href="{{ url('kategori/'.$category->slug) }}">{{ $category->name }}</a></li>
                              @endforeach
                          </ul>
                     </li>
