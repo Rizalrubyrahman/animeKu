@@ -24,3 +24,4 @@ Route::namespace('Admin')->middleware('auth')->group(function(){
 Route::get('/', 'Web\HomeController@index');
 Route::get('{article:slug}','Web\HomeController@detail');
 Route::get('/kategori/{category:slug}', 'Web\HomeController@category');
+Route::post('/comment', 'Web\HomeController@comment');

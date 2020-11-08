@@ -240,12 +240,12 @@
 						@foreach ($populer as $post)
 						    <!-- post -->
 								<div class="post post-widget">
-									<a class="post-img" href="{{ $post->slug }}"><img style="margin-top:9px;" src="{{ $post->getImage() }}" alt=""></a>
+									<a class="post-img" href="{{ url($post->slug) }}"><img style="margin-top:9px;" src="{{ $post->getImage() }}" alt=""></a>
 									<div class="post-body">
 										<div class="post-category">
 											<a href="{{ url('kategori/'.$post->categories->slug) }}">{{ $post->categories->name }}</a>
 										</div>
-										<h3 class="post-title"><a href="{{ $post->slug }}">{{ $post->title }}</a></h3>
+										<h3 class="post-title"><a href="{{ url($post->slug) }}">{{ \Str::limit($post->title, 50, '.') }}</a></h3>
 									</div>
 								</div>
 							<!-- /post -->
