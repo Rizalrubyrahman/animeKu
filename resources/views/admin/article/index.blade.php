@@ -50,11 +50,13 @@
                                              <td style="line-height:100px;">{{ $article->categories->name }}</td>
                                              <td class="text-center"><img style="height:100px; width:100px; " src="{{ $article->getImage() }}"></td>
                                              <td style="width: 100px; line-height: 100px;" class="text-center">
-                                                  <a  href="{{ url('/admin/artikel/'.$article->id.'/edit') }}" class="btn btn-sm btn-warning"><i style="color:white;" class="fa fa-pencil"></i></a>
-                                                  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#article{{ $article->id }}">
-                                                       <i class="fa fa-trash"></i>
-                                                  </button>
-                                                  @include('admin.article.partials.modal')
+                                                  @if (auth()->user()->id == $article->user->id)
+                                                       <a  href="{{ url('/admin/artikel/'.$article->id.'/edit') }}" class="btn btn-sm btn-warning"><i style="color:white;" class="fa fa-pencil"></i></a>
+                                                       <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#article{{ $article->id }}">
+                                                            <i class="fa fa-trash"></i>
+                                                       </button>
+                                                       @include('admin.article.partials.modal')     
+                                                  @endif
                                              </td>
                                         </tr>
                                         @empty

@@ -21,13 +21,13 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                         <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                         <img src="{{ auth()->user()->getImage() }}" class="user-image" alt="User Image">
                          <span class="hidden-xs">{{ Auth::user()->name }}</span>
                          </a>
                          <ul class="dropdown-menu">
                          <!-- User image -->
                          <li class="user-header">
-                              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                              <img src="{{ auth()->user()->getImage() }}" class="img-circle" alt="User Image">
 
                               <p>
                                    {{ Auth::user()->name}}
@@ -36,16 +36,13 @@
 
                          <!-- Menu Footer-->
                          <li class="user-footer">
-                              <div class="pull-left">
-                                   <a href="#" class="btn btn-default btn-flat">Profile</a>
+                              <div class="pull-right">
+                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                        <button type="submit" class="btn btn-default btn-flat">Logout</button>
+                                   </form>
                               </div>
-                                   <div class="pull-right">
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                             @csrf
-                                             <button type="submit" class="btn btn-default btn-flat">Logout</button>
-                                        </form>
-                                   </div>
-                              </li>
+                         </li>
                          </ul>
                     </li>
                </ul>

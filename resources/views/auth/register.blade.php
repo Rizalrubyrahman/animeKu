@@ -35,7 +35,7 @@
         <div class="login-box-body" style="padding-bottom: 60px;">
             <p class="login-box-msg">Aplikasi Laravel Blog</p>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group row">
@@ -65,6 +65,26 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="description">Deskripsi</label>
+                    <textarea name="description" id="description" class="form-control" cols="30" placeholder="Masukan Deskripsi" rows="10">{{ old('description') }}</textarea>
+                    @error('description')
+                        <div class="text-danger mt-2">
+                             {{ $message }}
+                        </div>
+                    @enderror
+               </div>
+               
+               <div class="form-group">
+                    <label for="image">Gambar</label>
+                    <input type="file" name="image" id="image" value="{{ old('image') }}" class="form-control">
+                    @error('image')
+                        <div class="text-danger mt-2">
+                             {{ $message }}
+                        </div>
+                    @enderror
+               </div>
 
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

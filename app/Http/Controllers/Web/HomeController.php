@@ -12,7 +12,7 @@ class HomeController extends Controller
    public function index()
    {
       $categories = Category::all();
-      $articles = Article::latest()->get();
+      $articles = Article::latest()->paginate(10);
       $populer = Article::orderBy('view', 'DESC')->take(4)->get();
      
       return view('front.index',compact('articles', 'categories', 'populer'));

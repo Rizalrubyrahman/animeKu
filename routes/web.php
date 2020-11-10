@@ -17,7 +17,8 @@ Auth::routes();
 Route::namespace('Admin')->middleware('auth')->group(function(){
     Route::resource('admin/', 'DashboardController');
     Route::resource('admin/kategori', 'CategoryController');
-    Route::resource('admin/artikel', 'ArticleController'); 
+    Route::resource('admin/artikel', 'ArticleController');
+    Route::resource('admin/author', 'AuthorController');
 });
 
 

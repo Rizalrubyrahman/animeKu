@@ -67,17 +67,11 @@
 						<div class="author media">
 							<div class="media-left">
 								<a>
-									<img class="author-img media-object" src="{{ asset('storage/image/rizal.jpg') }}" alt="">
+									<img class="author-img media-object" src="{{ $article->user->getImage() }}" alt="">
 								</a>
 							</div>
 							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-								<ul class="author-social">
-                                             <li><a href="https://facebook.com/rizalruby.rahman.1"><i class="fa fa-facebook"></i></a></li>
-                                             <li><a href="https://github.com/Rizalrubyrahman"><i class="fa fa-github"></i></a></li>
-                                             <li><a href="mailto:rizalrubyr@gmail.com"><i class="fa fa-google"></i></a></li>
-                                             <li><a href="https://www.instagram.com/rizalrrhmn/"><i class="fa fa-instagram"></i></a></li>
-								</ul>
+								<p>{{ $article->user->description }}</p>
 							</div>
 						</div>
 					</div>
@@ -131,8 +125,10 @@
 												<h4>{{ $row->username }}</h4>
 												<span class="time">{{ $row->created_at->diffForHumans() }}</span>
 											</div>
+											@if ($article->user->id)
 											<p style="margin-left: 50px;">{{ $row->comment }}</p>
 											<a style="margin-left: 50px;" class="reply" href="javascript:void(0)" onclick="balasKomentar({{ $row->id }}, '{{ $row->comment }}')">Balas</a>
+											@endif
 										</div>
 										@foreach ($row->child as $val)
 											<div class="media media-author">
