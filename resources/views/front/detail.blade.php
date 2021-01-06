@@ -62,7 +62,7 @@
 					<!-- post author -->
 					<div class="section-row">
 						<div class="section-title">
-							<h3 class="title">About <a>{{ $article->user->name }}</a></h3>
+							<h3 class="title">Tentang <a>{{ $article->user->name }}</a></h3>
 						</div>
 						<div class="author media">
 							<div class="media-left">
@@ -110,7 +110,7 @@
 					</div>
 					<!-- /related post -->
 
-					<!-- post comments -->
+					{{-- <!-- post comments -->
 					<div class="section-row">
 						<div class="section-title">
 							<h3 class="title">{{ $count }} Komentar</h3>
@@ -125,10 +125,8 @@
 												<h4>{{ $row->username }}</h4>
 												<span class="time">{{ $row->created_at->diffForHumans() }}</span>
 											</div>
-											@if ($article->user->id)
 											<p style="margin-left: 50px;">{{ $row->comment }}</p>
 											<a style="margin-left: 50px;" class="reply" href="javascript:void(0)" onclick="balasKomentar({{ $row->id }}, '{{ $row->comment }}')">Balas</a>
-											@endif
 										</div>
 										@foreach ($row->child as $val)
 											<div class="media media-author">
@@ -140,10 +138,13 @@
 																<span class="time">{{$val->created_at->diffForHumans()}}</span>
 															</div>
 															<p style="margin-left: 50px;">{{ $val->comment }}</p>
+															
 														</div>
 													</div>
 												</div>
 											</div>
+											
+											
 										@endforeach
 									@empty
 										<h3>Tidak Ada Komentar</h3>
@@ -203,7 +204,7 @@
 
 							</div>
 						</form>
-					</div>
+					</div> --}}
 					<!-- /post reply -->
 				</div>
 				<div class="col-md-4">
@@ -247,7 +248,7 @@
 					<!-- category widget -->
 					<div class="aside-widget">
 						<div class="section-title">
-							<h2 class="title">Categories</h2>
+							<h2 class="title">Kategori</h2>
 						</div>
 						<div class="category-widget">
 							<ul>

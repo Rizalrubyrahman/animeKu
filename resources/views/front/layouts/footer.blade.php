@@ -19,7 +19,7 @@
                </div>
                <div class="col-md-6">
                     <div class="footer-widget">
-                         <h3 class="footer-title">Categories</h3>
+                         <h3 class="footer-title">Kategori</h3>
                          <div class="category-widget">
                               <ul>
                                    <div class="row">

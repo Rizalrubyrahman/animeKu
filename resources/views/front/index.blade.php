@@ -170,7 +170,7 @@
 											<i class="fa fa-eye" style="font-size: 16px;"></i>
 											<span style="margin-left:5px; margin-top:-100px;">{{ $article->view }}</span>
 										</div>
-										<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" alt=""></a>
+										<a class="post-img" href="{{ $article->slug }}"><img src="{{ $article->getImage() }}" style="height:150px;"></a>
 										<div class="post-body">
 											<div class="post-category">
 												<a href="{{ url('kategori/'.$article->categories->slug) }}">{{ $article->categories->name }}</a>

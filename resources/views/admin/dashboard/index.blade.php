@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title','Home')
+@section('title','Dashboard')
 
 @section('content')
     <section class="content-header">
         <h1>
-            Home
+            Dashboard
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('admin') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
@@ -17,8 +17,6 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Title</h3>
-    
                 <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fa fa-minus"></i></button>
@@ -27,15 +25,53 @@
                 </div>
             </div>
             <div class="box-body">
-                Start creating your amazing application!
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                Footer
+                <canvas id="myChart" width="400" height="150"></canvas>
             </div>
           <!-- /.box-footer-->
         </div>
         <!-- /.box -->
   
     </section>
+   
+@endsection
+@section('chart')
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                        labels: <?php echo json_encode($month) ?>,
+                        datasets: [{
+                            label: 'view',
+                            data:<?php echo json_encode($count) ?> ,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                },
+                options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                }
+            });
+        </script>
 @endsection
